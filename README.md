@@ -25,15 +25,16 @@ We need to analyze key indicators for our pizza sales data to gain insights into
 We would like to visualize various aspects of our pizza sales data to gain insights and understand key trends. We have identified the following requirements for creating charts:
 1. Hourly Trend for line chart  chart that displays the hourly trend of total revenue  over a specific time period. This chart will help us identify any patterns or volumes on a hourly basis.
 2. Weekly Trend for total revenue: Create a line chart that illustrates the weekly trend of total orders throughout the year. This chart will allow us to identify peak weeks or periods of high order activity.
-3Total Revenue  over the years (time )
+Total Revenue  over the years (time ) Total revenue over the years shows how the business is growing or declining with time. Any upward trend indicates improved sales performance, while dips highlight periods needing investigation. This helps identify successful years, seasonal patterns, and long-term business health.
 4. Percentage of Sales by Pizza Size: Generate a pie chart that represents the percentage of sales attributed to different pizza sizes. This chart will help us understand customer preferences for pizza sizes and their impact on sales.
-5. Revenue by Piza name in bar chart
-6. Top 5 Best Sellers by Revenue, Total Quantity and Total Orders: Create a bar chart highlighting the top 5 best-selling pizzas based on the Revenue, Total Quantity, Total Orders. This chart will help us identify the most popular pizza options.
-7. Bottom 5 Best Sellers by Revenue, Total Quantity and Total Orders: Create a bar chart showcasing the bottom 5 worst-selling pizzas based on the Revenue, Total Quantity, Total Orders. This chart will enable us to identify underperforming or less popular pizza options.
+5. Revenue by Piza name in bar chart .The bar chart shows which pizza items generate the highest revenue, helping identify the most profitable products. Top-selling pizzas should be prioritized for promotions and inventory, while low-revenue items may need pricing, marketing, or menu improvement.
+6.Filtering by pizza category shows which categories (Classic, Veggie, Supreme, etc.) contribute most to overall sales and revenue. It helps compare customer preferences across categories and identify top-performing or underperforming segments. This allows better menu planning, marketing focus, and inventory control.
+7. Using the month filter helps identify seasonal trends in sales throughout the year. It highlights peak months with higher revenue and low-performing months that may need promotions. This supports better forecasting, staffing, and inventory planning.
+
 ## Data Analysis using MySQL
 Utilized MySQL for data extraction and calculation of key metrics such as Total Revenue, Average Order Value, Total Pizzas Sold, Total Orders, and Average Pizzas Per Order.
-### DATA IMPORT
-<img width="958" height="536" alt="PIZAA SALES" src="https://github.com/user-attachments/assets/e6a472fd-45db-4edc-99bd-8c2eb6f64333" />
+### DATA IMPORT https://drive.google.com/open?id=1NlNRLROjMW8vKFZ-YFMq31QJjEMutk6J&usp=drive_fs
+
 
 ##### 
 ### ANALYSIS OF DIFFERENT SQL STATEMENT ON DATA BASE
@@ -109,46 +110,10 @@ FROM pizza_sales
 GROUP BY pizza_category
 ORDER BY Total_Quantity_Sold DESC;
 ```
-#### G.	Top 5 Pizzas by Revenue
-```sql
-SELECT pizza_name, SUM(total_price) AS Total_Revenue
-FROM  pizza_sales
-GROUP BY pizza_name
-ORDER BY Total_Revenue DESC LIMIT 5;
-```
-#### H. Bottom 5 Pizzas by Revenue
-```sql
-SELECT pizza_name, SUM(total_price) AS Total_Revenue
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY Total_Revenue ASC LIMIT 5;
-```
-#### I. Top 5 Pizzas by Quantity
-```sql
-SELECT pizza_name, SUM(quantity) AS Total_Pizza_Sold
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY Total_Pizza_Sold ASC
- LIMIT 5;
-```
-#### J. Top 5 Pizzas by Total Orders
-```sql
-SELECT pizza_name, COUNT(DISTINCT order_id) AS Total_Orders
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY Total_Orders DESC
-LIMIT 5;
-```
-#### K. Borrom 5 Pizzas by Total Orders
-```sql
-SELECT 
-    pizza_name, 
-    COUNT(DISTINCT order_id) AS Total_Orders
-FROM pizza_sales
-GROUP BY pizza_name
-ORDER BY Total_Orders ASC
-LIMIT 5;
-```
+
+
+
+
 ## Data Cleaning 
 Pizza size category we have in our database is abbreviated and for dashboard we need it in full expanded form. For eg. L= large, M= medium etc, so we will create an alias to temporary change its name in required format.
 ##### 
@@ -161,6 +126,8 @@ Created a comprehensive dashboard in Tableau featuring key metrics and charts, i
 -	Total Pizzas Sold SUM([quantity])
 -	Average Pizzas Per Order [total pizzas sold] / [total orders]
 ##### Dashbaord
+<img width="958" height="536" alt="PIZAA SALES" src="https://github.com/user-attachments/assets/9836768e-447b-49ff-9018-d9e83e693e1e" />
+
 
 
 
